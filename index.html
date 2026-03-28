@@ -1,0 +1,446 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>RECAP – Research, Education and Clinical Academic Project</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: 'Inter', sans-serif;
+    background: #f0f2f5;
+    color: #1a1a2e;
+    line-height: 1.6;
+    font-size: 14px;
+  }
+
+  /* PAGE WRAPPER */
+  .page {
+    width: 100%;
+    background: #fff;
+  }
+
+  /* ── HEADER ── */
+  .hero {
+    background: #1a2d5e;
+    color: #fff;
+    padding: clamp(1.5rem, 4vw, 3rem) clamp(1rem, 5vw, 2rem) clamp(1.25rem, 3vw, 2rem);
+    text-align: center;
+  }
+
+  .hero-title {
+    font-size: clamp(2.2rem, 10vw, 5rem);
+    font-weight: 800;
+    letter-spacing: 0.18em;
+    margin-bottom: clamp(0.75rem, 2vw, 1.2rem);
+    line-height: 1;
+  }
+  .hero-title .c-letter {
+    color: #f5a623;
+  }
+
+  .pills {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.4rem;
+    margin-bottom: clamp(0.75rem, 2vw, 1.2rem);
+  }
+  .pill {
+    background: transparent;
+    border: 1.5px solid rgba(255,255,255,0.35);
+    border-radius: 999px;
+    padding: 0.25rem clamp(0.5rem, 2vw, 0.9rem);
+    font-size: clamp(0.7rem, 2vw, 0.82rem);
+    font-weight: 500;
+    color: rgba(255,255,255,0.9);
+    display: flex;
+    align-items: center;
+    gap: 0.3rem;
+  }
+  .pill-letter {
+    font-weight: 800;
+    font-size: clamp(0.72rem, 2vw, 0.88rem);
+  }
+  .pill:nth-child(1) .pill-letter { color: #e05c5c; }
+  .pill:nth-child(2) .pill-letter { color: #4fc3f7; }
+  .pill:nth-child(3) .pill-letter { color: #f5a623; }
+  .pill:nth-child(4) .pill-letter { color: #f5a623; }
+  .pill:nth-child(5) .pill-letter { color: #ab47bc; }
+
+  .hero-tagline {
+    font-size: clamp(0.8rem, 2.5vw, 0.95rem);
+    color: rgba(255,255,255,0.75);
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 0 0.5rem;
+  }
+
+  /* ── SECTION SHARED ── */
+  section {
+    padding: clamp(1.25rem, 4vw, 2.2rem) clamp(1rem, 5vw, 2.5rem);
+  }
+
+  .section-inner {
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+
+  .section-label {
+    font-size: clamp(0.65rem, 1.8vw, 0.74rem);
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-bottom: clamp(0.75rem, 2vw, 1.2rem);
+  }
+
+  .cards {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: clamp(0.6rem, 2vw, 1rem);
+  }
+
+  /* Tablet: 2 cols */
+  @media (max-width: 680px) {
+    .cards { grid-template-columns: repeat(2, 1fr); }
+  }
+  /* Mobile: 1 col */
+  @media (max-width: 420px) {
+    .cards { grid-template-columns: 1fr; }
+  }
+
+  .card {
+    background: #fff;
+    border-radius: 12px;
+    padding: clamp(1rem, 3vw, 1.4rem) clamp(0.75rem, 2.5vw, 1.1rem);
+    text-align: center;
+    box-shadow: 0 1px 6px rgba(0,0,0,0.07);
+  }
+
+  .card-icon {
+    font-size: clamp(1.5rem, 4vw, 2rem);
+    margin-bottom: 0.55rem;
+    display: block;
+  }
+
+  .card h3 {
+    font-size: clamp(0.8rem, 2vw, 0.9rem);
+    font-weight: 700;
+    margin-bottom: 0.4rem;
+    line-height: 1.3;
+  }
+
+  .card p {
+    font-size: clamp(0.72rem, 1.8vw, 0.82rem);
+    color: #555;
+    line-height: 1.55;
+  }
+
+  /* ── PROBLEM SECTION ── */
+  .section-problem {
+    background: #fffbea;
+    border-top: 4px solid #f5a623;
+  }
+  .section-problem .section-label { color: #b45309; }
+  .section-problem .card h3 { color: #c05c00; }
+
+  /* ── SOLUTION BANNER ── */
+  .solution-banner {
+    background: #ede9f8;
+    text-align: center;
+    padding: clamp(0.6rem, 2vw, 0.9rem) 1rem;
+    font-size: clamp(0.68rem, 2vw, 0.8rem);
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: #5b3fa6;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+  }
+
+  /* ── BUILDING SECTION ── */
+  .section-building {
+    background: #f0ebfc;
+  }
+  .section-building .section-label { color: #5b3fa6; }
+  .section-building .card { position: relative; padding-top: clamp(1.6rem, 4vw, 2.2rem); }
+  .section-building .card h3 { color: #4a2d9e; }
+
+  .step-badge {
+    position: absolute;
+    top: -14px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 28px;
+    height: 28px;
+    background: #5b3fa6;
+    color: #fff;
+    border-radius: 50%;
+    font-size: 0.78rem;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  /* ── OUTCOMES SECTION ── */
+  .section-outcomes {
+    background: #edfbf1;
+  }
+  .section-outcomes .section-label { color: #1a7a3c; }
+  .section-outcomes .card h3 { color: #1a7a3c; }
+
+  /* ── TIMELINE SECTION ── */
+  .section-timeline {
+    background: #fff;
+    border-top: 1px solid #eee;
+  }
+  .section-timeline .section-label { color: #1a2d5e; }
+
+  .timeline {
+    display: flex;
+    flex-direction: column;
+    gap: clamp(0.6rem, 2vw, 1rem);
+  }
+
+  .timeline-item {
+    border: 1.5px solid #e5e7eb;
+    border-radius: 12px;
+    padding: clamp(0.8rem, 2.5vw, 1.1rem) clamp(0.9rem, 3vw, 1.3rem);
+    display: flex;
+    gap: clamp(0.7rem, 2vw, 1.1rem);
+    align-items: flex-start;
+  }
+
+  .tl-dot {
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    flex-shrink: 0;
+    margin-top: 0.35rem;
+  }
+
+  .tl-body { flex: 1; min-width: 0; }
+
+  .tl-phase {
+    font-size: clamp(0.6rem, 1.6vw, 0.7rem);
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: #888;
+    margin-bottom: 0.15rem;
+  }
+
+  .tl-period {
+    font-size: clamp(0.88rem, 2.5vw, 1rem);
+    font-weight: 700;
+    color: #1a2d5e;
+    margin-bottom: 0.5rem;
+  }
+
+  .tl-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+  }
+
+  .tl-tag {
+    background: #f3f4f6;
+    border: 1px solid #e5e7eb;
+    border-radius: 999px;
+    padding: 0.18rem clamp(0.5rem, 2vw, 0.75rem);
+    font-size: clamp(0.68rem, 1.8vw, 0.76rem);
+    color: #444;
+  }
+
+  /* ── FOOTER ── */
+  footer {
+    background: #1a2d5e;
+    color: rgba(255,255,255,0.75);
+    text-align: center;
+    padding: clamp(1rem, 3vw, 1.5rem) clamp(1rem, 5vw, 2rem);
+    font-size: clamp(0.75rem, 2vw, 0.85rem);
+    line-height: 1.7;
+  }
+  footer strong {
+    color: #f5a623;
+  }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <!-- HEADER -->
+  <header class="hero">
+    <div class="hero-title">
+      RE<span class="c-letter">C</span>AP
+    </div>
+    <div class="pills">
+      <div class="pill"><span class="pill-letter">R</span> Research</div>
+      <div class="pill"><span class="pill-letter">E</span> Education</div>
+      <div class="pill"><span class="pill-letter">C</span> Clinical</div>
+      <div class="pill"><span class="pill-letter">A</span> Academic</div>
+      <div class="pill"><span class="pill-letter">P</span> Project</div>
+    </div>
+    <p class="hero-tagline">Supporting trainees who want to do meaningful research and connect with their specialty of interest</p>
+  </header>
+
+  <!-- THE PROBLEM -->
+  <section class="section-problem">
+    <div class="section-inner">
+      <div class="section-label">&#128269; The Problem &mdash; What We Found in Our Survey</div>
+      <div class="cards">
+        <div class="card">
+          <span class="card-icon">&#128682;</span>
+          <h3>No point of contact</h3>
+          <p>Trainees don't know who to reach out to or how to get introduced to the field</p>
+        </div>
+        <div class="card">
+          <span class="card-icon">&#128506;</span>
+          <h3>Don't know how to start</h3>
+          <p>Interest exists, but there's no clear first step or roadmap to follow</p>
+        </div>
+        <div class="card">
+          <span class="card-icon">&#129520;</span>
+          <h3>Lack of skills &amp; resources</h3>
+          <p>Limited access to research training, tools, and learning materials</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SOLUTION BANNER -->
+  <div class="solution-banner">
+    RECAP&rsquo;s Solution &#9660;
+  </div>
+
+  <!-- WHAT RECAP IS BUILDING -->
+  <section class="section-building">
+    <div class="section-inner">
+      <div class="section-label">&#128161; What RECAP Is Building</div>
+      <div class="cards">
+        <div class="card">
+          <div class="step-badge">1</div>
+          <span class="card-icon">&#129309;</span>
+          <h3>Specialty Collaboratives</h3>
+          <p>Groups of experienced members ready to guide trainees in their specialty of interest</p>
+        </div>
+        <div class="card">
+          <div class="step-badge">2</div>
+          <span class="card-icon">&#128197;</span>
+          <h3>Monthly Skill Sessions</h3>
+          <p>Regular meetings to learn research skills and practice presenting research</p>
+        </div>
+        <div class="card">
+          <div class="step-badge">3</div>
+          <span class="card-icon">&#128218;</span>
+          <h3>Resource Repository</h3>
+          <p>A shared library of research tools, templates, and reference materials</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- EXPECTED OUTCOMES -->
+  <section class="section-outcomes">
+    <div class="section-inner">
+      <div class="section-label">&#9989; Expected Outcomes</div>
+      <div class="cards">
+        <div class="card">
+          <span class="card-icon">&#128200;</span>
+          <h3>Trainees gain real skills</h3>
+          <p>Leading to meaningful, high-quality research output</p>
+        </div>
+        <div class="card">
+          <span class="card-icon">&#129351;</span>
+          <h3>Mentors get recognition</h3>
+          <p>Formal credit for guiding others &mdash; great for their academic portfolio</p>
+        </div>
+        <div class="card">
+          <span class="card-icon">&#127760;</span>
+          <h3>Stronger connections</h3>
+          <p>A network of people united by specialty interest and shared purpose</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- RECAP TIMELINE -->
+  <section class="section-timeline">
+    <div class="section-inner">
+      <div class="section-label">&#128197; RECAP Timeline</div>
+      <div class="timeline">
+
+        <div class="timeline-item">
+          <div class="tl-dot" style="background:#f5a623;"></div>
+          <div class="tl-body">
+            <div class="tl-phase">Pre-Launch</div>
+            <div class="tl-period">April &ndash; May</div>
+            <div class="tl-tags">
+              <span class="tl-tag">Identify faculty advisor</span>
+              <span class="tl-tag">Finalize resident leadership</span>
+              <span class="tl-tag">Introduce RECAP at intern orientation</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="timeline-item">
+          <div class="tl-dot" style="background:#ab47bc;"></div>
+          <div class="tl-body">
+            <div class="tl-phase">Early Academic Year</div>
+            <div class="tl-period">June &ndash; August</div>
+            <div class="tl-tags">
+              <span class="tl-tag">Connect interns with specialty liaisons</span>
+              <span class="tl-tag">Gather project ideas</span>
+              <span class="tl-tag">Launch monthly skill sessions</span>
+              <span class="tl-tag">Set up shared tracker &amp; templates</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="timeline-item">
+          <div class="tl-dot" style="background:#1a56a0;"></div>
+          <div class="tl-body">
+            <div class="tl-phase">Mid-Year</div>
+            <div class="tl-period">September &ndash; December</div>
+            <div class="tl-tags">
+              <span class="tl-tag">Support project development</span>
+              <span class="tl-tag">Navigate regulatory processes</span>
+              <span class="tl-tag">Encourage early abstract submissions</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="timeline-item">
+          <div class="tl-dot" style="background:#2e9e5b;"></div>
+          <div class="tl-body">
+            <div class="tl-phase">Late Academic Year</div>
+            <div class="tl-period">January &ndash; April</div>
+            <div class="tl-tags">
+              <span class="tl-tag">Expand participation</span>
+              <span class="tl-tag">Increase scholarly activity</span>
+              <span class="tl-tag">Prepare leadership transition</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <strong>RECAP</strong> &mdash; built on the idea that great mentors already exist. They just need a structure and recognition to make it official.
+  </footer>
+
+</div>
+</body>
+</html>
