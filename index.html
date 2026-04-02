@@ -273,6 +273,76 @@
   footer strong {
     color: #f5a623;
   }
+
+  /* ── SUB-TAGLINE ── */
+  .hero-sub {
+    margin-top: clamp(0.5rem, 1.5vw, 0.85rem);
+    font-size: clamp(0.72rem, 2vw, 0.88rem);
+    color: rgba(255,255,255,0.65);
+    line-height: 1.6;
+    text-align: center;
+  }
+  .hero-sub strong {
+    color: rgba(255,255,255,0.85);
+    font-weight: 600;
+    display: block;
+    margin-bottom: 0.1rem;
+  }
+
+  /* ── SURVEY SECTION ── */
+  .section-survey {
+    background: #1a2d5e;
+    text-align: center;
+    padding: 0.6rem clamp(1rem, 5vw, 2rem) 0.8rem;
+  }
+  .survey-inner {
+    max-width: 700px;
+    margin: 0 auto;
+  }
+  .survey-inner p {
+    color: #fff;
+    font-size: clamp(1.1rem, 3.5vw, 1.6rem);
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+    letter-spacing: 0.02em;
+  }
+  .survey-arrow {
+    font-size: clamp(2rem, 5vw, 3rem);
+    color: #f5a623;
+    line-height: 1;
+    margin-bottom: 0.3rem;
+    animation: bounce 1s infinite;
+  }
+  @keyframes bounce {
+    0%, 100% { transform: translateY(0); }
+    50%       { transform: translateY(6px); }
+  }
+  .survey-btn {
+    display: inline-block;
+    background: #f5a623;
+    color: #1a2d5e;
+    font-weight: 700;
+    font-size: clamp(0.9rem, 2.5vw, 1.1rem);
+    padding: 0.65rem 2rem;
+    border-radius: 999px;
+    text-decoration: none;
+    letter-spacing: 0.04em;
+    transition: background 0.18s, transform 0.15s;
+    box-shadow: 0 3px 10px rgba(0,0,0,0.25);
+  }
+  .survey-btn:hover {
+    background: #ffc34d;
+    transform: translateY(-2px);
+  }
+
+  /* ── TAGLINE NOWRAP ON DESKTOP ── */
+  .hero-tagline {
+    white-space: normal;
+    max-width: 700px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
 </style>
 </head>
 <body>
@@ -291,7 +361,18 @@
       <div class="pill"><span class="pill-letter">P</span> Project</div>
     </div>
     <p class="hero-tagline">Supporting trainees who want to do meaningful research and connect with their specialty of interest</p>
+    <div class="hero-sub"><strong>An Initiative by trainees, for trainees</strong>Internal Medicine<br>University of Miami | Jackson Memorial Hospital</div>
   </header>
+
+
+  <!-- SURVEY LINK -->
+  <section class="section-survey">
+    <div class="survey-inner">
+      <p>Welcome new intern! You can do survey here</p>
+      <div class="survey-arrow">&#8595;</div>
+      <a class="survey-btn" href="https://forms.gle/o6hqBrvXAT9cCo1FA" target="_blank" rel="noopener">&#128203; Take the Survey</a>
+    </div>
+  </section>
 
   <!-- THE PROBLEM -->
   <section class="section-problem">
