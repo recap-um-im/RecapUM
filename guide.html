@@ -40,18 +40,154 @@
   }
 
   /* ── NAV ── */
-  nav { background: var(--green-dark); border-bottom: 3px solid var(--orange); position: sticky; top: 0; z-index: 100; }
-  .nav-inner { max-width: var(--max-w); margin: 0 auto; padding: 0 clamp(1rem,4vw,2.5rem); display: flex; align-items: center; justify-content: space-between; height: 54px; gap: 1.5rem; }
-  .nav-logo { font-family: var(--serif); font-size: 1.35rem; font-weight: 600; color: var(--white); text-decoration: none; letter-spacing: 0.04em; display: flex; align-items: center; gap: 0.55rem; white-space: nowrap; }
+  nav {
+    background: var(--green-dark);
+    border-bottom: 3px solid var(--orange);
+    position: sticky;
+    top: 0;
+    z-index: 200;
+  }
+  .nav-inner {
+    max-width: var(--max-w);
+    margin: 0 auto;
+    padding: 0 clamp(1rem, 4vw, 2.5rem);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 54px;
+    gap: 1rem;
+  }
+  .nav-logo {
+    font-family: var(--serif);
+    font-size: 1.35rem;
+    font-weight: 600;
+    color: var(--white);
+    text-decoration: none;
+    letter-spacing: 0.04em;
+    display: flex;
+    align-items: center;
+    gap: 0.55rem;
+    white-space: nowrap;
+    z-index: 201;
+  }
   .nav-logo-dot { width: 7px; height: 7px; background: var(--orange); border-radius: 50%; flex-shrink: 0; }
+
+  /* Desktop links */
   .nav-links { display: flex; align-items: center; gap: 0.25rem; list-style: none; }
-  .nav-links a { color: rgba(255,255,255,0.75); text-decoration: none; font-size: 0.82rem; font-weight: 500; letter-spacing: 0.04em; padding: 0.35rem 0.75rem; border-radius: 4px; transition: color 0.15s, background 0.15s; }
+  .nav-links a {
+    color: rgba(255,255,255,0.75);
+    text-decoration: none;
+    font-size: 0.82rem;
+    font-weight: 500;
+    letter-spacing: 0.04em;
+    padding: 0.35rem 0.75rem;
+    border-radius: 4px;
+    transition: color 0.15s, background 0.15s;
+    white-space: nowrap;
+  }
   .nav-links a:hover { color: var(--white); background: rgba(255,255,255,0.1); }
   .nav-links a.active { color: var(--white); }
-  .nav-btn { background: var(--orange) !important; color: var(--white) !important; font-weight: 700 !important; padding: 0.35rem 1rem !important; border-radius: 2px !important; }
+  .nav-btn {
+    background: var(--orange) !important;
+    color: var(--white) !important;
+    font-weight: 700 !important;
+    padding: 0.35rem 1rem !important;
+    border-radius: 2px !important;
+  }
   .nav-btn:hover { background: #e06510 !important; }
-  @media (max-width: 640px) { .nav-links li:not(:last-child):not(:nth-last-child(2)) { display: none; } }
 
+  /* Hamburger button */
+  .nav-hamburger {
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
+    width: 38px;
+    height: 38px;
+    background: transparent;
+    border: 1.5px solid rgba(255,255,255,0.25);
+    border-radius: 4px;
+    cursor: pointer;
+    padding: 0;
+    z-index: 201;
+    flex-shrink: 0;
+  }
+  .nav-hamburger span {
+    display: block;
+    width: 18px;
+    height: 2px;
+    background: var(--white);
+    border-radius: 2px;
+    transition: transform 0.25s, opacity 0.25s;
+    transform-origin: center;
+  }
+  .nav-hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+  .nav-hamburger.open span:nth-child(2) { opacity: 0; transform: scaleX(0); }
+  .nav-hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+  /* Mobile drawer */
+  .nav-mobile {
+    display: none;
+    position: fixed;
+    top: 57px;
+    left: 0;
+    right: 0;
+    background: var(--green-dark);
+    border-bottom: 3px solid var(--orange);
+    z-index: 199;
+    transform: translateY(-110%);
+    transition: transform 0.28s cubic-bezier(0.4,0,0.2,1);
+    box-shadow: 0 8px 24px rgba(0,0,0,0.25);
+  }
+  .nav-mobile.open { transform: translateY(0); }
+  .nav-mobile ul {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    padding: 0.75rem 1rem 1rem;
+    gap: 0.15rem;
+  }
+  .nav-mobile a {
+    display: block;
+    color: rgba(255,255,255,0.85);
+    text-decoration: none;
+    font-size: 0.95rem;
+    font-weight: 500;
+    padding: 0.7rem 0.85rem;
+    border-radius: 4px;
+    transition: background 0.15s, color 0.15s;
+    letter-spacing: 0.02em;
+  }
+  .nav-mobile a:hover { background: rgba(255,255,255,0.1); color: var(--white); }
+  .nav-mobile a.active { color: var(--white); font-weight: 600; }
+  .nav-mobile .mob-btn {
+    background: var(--orange);
+    color: var(--white) !important;
+    font-weight: 700 !important;
+    margin-top: 0.35rem;
+    text-align: center;
+  }
+  .nav-mobile .mob-btn:hover { background: #e06510; }
+
+  /* Overlay */
+  .nav-overlay {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.35);
+    z-index: 198;
+    opacity: 0;
+    transition: opacity 0.25s;
+  }
+  .nav-overlay.open { opacity: 1; }
+
+  @media (max-width: 680px) {
+    .nav-links { display: none; }
+    .nav-hamburger { display: flex; }
+    .nav-mobile { display: block; }
+    .nav-overlay { display: block; }
+  }
   /* ── PAGE HEADER ── */
   .page-header { background: var(--green-dark); color: var(--white); padding: clamp(2.5rem,6vw,4.5rem) clamp(1rem,4vw,2.5rem) clamp(2rem,5vw,3.5rem); position: relative; overflow: hidden; }
   .page-header::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse 70% 80% at 90% 20%, rgba(29,158,117,0.18) 0%, transparent 60%), radial-gradient(ellipse 40% 60% at 5% 90%, rgba(244,115,33,0.07) 0%, transparent 50%); pointer-events: none; }
@@ -250,6 +386,274 @@
   .footer-link { color: rgba(255,255,255,0.65); font-size: 0.8rem; font-weight: 500; text-decoration: none; transition: color 0.15s; }
   .footer-link:hover { color: var(--orange); }
   .footer-copy { font-size: 0.72rem; color: rgba(255,255,255,0.3); margin-top: 0.25rem; }
+
+  /* ══════════════════════════════════════
+     MOBILE IMPROVEMENTS (max-width: 680px)
+  ══════════════════════════════════════ */
+  @media (max-width: 680px) {
+
+    /* Hero */
+    .hero { padding: 2.5rem 1rem 2rem; }
+    .hero-wordmark { font-size: clamp(3.5rem, 22vw, 5.5rem); }
+    .hero-tagline { font-size: 1.1rem; }
+    .hero-actions { flex-direction: column; align-items: flex-start; }
+    .btn-primary, .btn-ghost { width: 100%; justify-content: center; }
+
+    /* Page header (team/guide) */
+    .page-header { padding: 2rem 1rem 1.75rem; }
+    .page-header h1 { font-size: clamp(2rem, 11vw, 3rem); }
+    .header-actions { flex-direction: column; align-items: flex-start; }
+    .header-actions .btn-primary,
+    .header-actions .btn-ghost { width: 100%; justify-content: center; }
+
+    /* Sections */
+    .section { padding: 2rem 1rem; }
+    .section-lead { margin-bottom: 1.5rem; }
+
+    /* Problem / Pillars / Outcomes grids already stacked via existing media queries */
+
+    /* Timeline */
+    .tl-row { grid-template-columns: 1fr; }
+    .tl-meta { border-right: none; border-bottom: 1px solid var(--gray-200); }
+
+    /* Mission banner */
+    .mission-banner { padding: 2rem 1rem; }
+    .mission-quote { font-size: 1.2rem; }
+
+    /* Footer */
+    .footer-inner { flex-direction: column; align-items: flex-start; gap: 1.25rem; }
+    .footer-right { align-items: flex-start; }
+
+    /* Solution bridge */
+    .solution-bridge-inner { flex-direction: column; gap: 0.5rem; text-align: center; }
+  }
+
+  /* Guide-page specific mobile */
+  @media (max-width: 680px) {
+    /* Quick nav scrolls horizontally — already works, just make text slightly smaller */
+    .quick-nav-inner a { font-size: 0.74rem; padding: 0.75rem 0.85rem; }
+
+    /* Steps connector line */
+    .steps::before { left: 15px; }
+    .step { grid-template-columns: 32px 1fr; gap: 0.9rem; padding-bottom: 1.75rem; }
+    .step-num { width: 32px; height: 32px; font-size: 0.72rem; }
+
+    /* Step card */
+    .step-card { padding: 1.1rem 1.1rem; }
+    .step-card h3 { font-size: 1rem; }
+
+    /* Analysis paths already stack via existing query */
+    /* Writing options already stack */
+    /* Track cards already stack */
+
+    /* Resource table: make it scroll horizontally on very narrow screens */
+    .resource-table-wrap { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+
+    /* Guide layout */
+    .guide-layout { padding: 1.5rem 1rem; }
+
+    /* Section sequence label */
+    .sequence-label { font-size: 0.74rem; padding: 0.5rem 0.75rem; }
+
+    /* Info box */
+    .info-box li { font-size: 0.82rem; }
+
+    /* Chips */
+    .chips { gap: 0.35rem; }
+    .chip { font-size: 0.74rem; padding: 0.22rem 0.6rem; }
+
+    /* BCCC hours */
+    .bccc-hours .hours-row { font-size: 0.74rem; }
+
+    /* Writing options */
+    .wo-title { font-size: 0.84rem; }
+    .wo-desc { font-size: 0.78rem; }
+
+    /* Timeline table */
+    .timeline-table { font-size: 0.78rem; }
+    .timeline-table td, .timeline-table th { padding: 0.5rem 0.65rem; }
+
+    /* Review table */
+    .review-table { font-size: 0.78rem; }
+    .review-table td, .review-table th { padding: 0.5rem 0.65rem; }
+
+    /* Team page: member cards slightly smaller */
+    .members-grid { grid-template-columns: repeat(auto-fill, minmax(130px, 1fr)); gap: 0.9rem; }
+    .specialty-member { width: 110px; }
+    .member-name { font-size: 0.78rem; }
+    .member-role { font-size: 0.68rem; }
+
+    /* Section titles */
+    .guide-section > h2 { font-size: 1.5rem; }
+    .section-title { font-size: 1.3rem; }
+  }
+
+
+  /* ── REDCAP STEP 4 ── */
+  .redcap-hero {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.1rem;
+    background: linear-gradient(135deg, #005030 0%, #007a4a 100%);
+    border-radius: 8px;
+    padding: 1.3rem 1.4rem;
+    margin-top: 1rem;
+    color: var(--white);
+    align-items: center;
+  }
+  @media (max-width: 600px) { .redcap-hero { grid-template-columns: 1fr; } }
+
+  .redcap-tagline {
+    font-size: 0.65rem;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--green-mid);
+    margin-bottom: 0.5rem;
+  }
+  .redcap-desc {
+    font-size: 0.85rem;
+    color: rgba(255,255,255,0.85);
+    line-height: 1.65;
+    margin-bottom: 0.9rem;
+  }
+  .redcap-cta {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.45rem;
+    background: var(--orange);
+    color: var(--white);
+    font-size: 0.8rem;
+    font-weight: 700;
+    padding: 0.45rem 1rem;
+    border-radius: 3px;
+    text-decoration: none;
+    transition: background 0.15s;
+    box-shadow: 0 2px 8px rgba(244,115,33,0.4);
+  }
+  .redcap-cta:hover { background: #d9610e; }
+
+  .redcap-badge-row {
+    display: flex;
+    flex-direction: column;
+    gap: 0.45rem;
+  }
+  .redcap-badge {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.78rem;
+    color: rgba(255,255,255,0.9);
+    background: rgba(255,255,255,0.1);
+    border-radius: 4px;
+    padding: 0.35rem 0.75rem;
+    font-weight: 500;
+  }
+
+  /* REDCap sub-steps */
+  .redcap-steps {
+    margin-top: 1.1rem;
+    border: 1.5px solid var(--gray-200);
+    border-radius: 7px;
+    overflow: hidden;
+  }
+  .redcap-step-label {
+    background: var(--gray-100);
+    font-size: 0.63rem;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--gray-400);
+    padding: 0.5rem 1rem;
+    border-bottom: 1px solid var(--gray-200);
+  }
+  .redcap-step-row {
+    display: grid;
+    grid-template-columns: 32px 1fr;
+    gap: 0.9rem;
+    padding: 0.9rem 1rem;
+    border-bottom: 1px solid var(--gray-200);
+    align-items: start;
+    transition: background 0.15s;
+  }
+  .redcap-step-row:last-child { border-bottom: none; }
+  .redcap-step-row:hover { background: var(--off-white); }
+
+  .rc-step-num {
+    width: 28px;
+    height: 28px;
+    background: var(--green-dark);
+    color: var(--white);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.72rem;
+    font-weight: 700;
+    flex-shrink: 0;
+    margin-top: 1px;
+  }
+  .rc-step-title {
+    font-size: 0.87rem;
+    font-weight: 700;
+    color: var(--gray-800);
+    margin-bottom: 0.2rem;
+    line-height: 1.3;
+  }
+  .rc-step-detail {
+    font-size: 0.82rem;
+    color: var(--gray-600);
+    line-height: 1.6;
+  }
+  .rc-step-detail a { color: var(--green-dark); font-weight: 600; }
+  .rc-step-detail a:hover { color: var(--green-mid); }
+
+  /* Support row */
+  .redcap-support-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.75rem;
+    margin-top: 0.85rem;
+  }
+  @media (max-width: 500px) { .redcap-support-row { grid-template-columns: 1fr; } }
+
+  .redcap-support-item {
+    background: var(--gray-100);
+    border: 1.5px solid var(--gray-200);
+    border-radius: 6px;
+    padding: 0.75rem 0.9rem;
+  }
+  .rsi-label {
+    font-size: 0.62rem;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--gray-400);
+    margin-bottom: 0.3rem;
+  }
+  .rsi-link {
+    font-size: 0.83rem;
+    font-weight: 700;
+    color: var(--green-dark);
+    text-decoration: none;
+    display: block;
+    margin-bottom: 0.2rem;
+  }
+  a.rsi-link:hover { color: var(--green-mid); }
+  .rsi-note {
+    font-size: 0.74rem;
+    color: var(--gray-400);
+    line-height: 1.4;
+  }
+
+  @media (max-width: 680px) {
+    .redcap-hero { padding: 1rem 1.1rem; gap: 0.9rem; }
+    .redcap-badge { font-size: 0.74rem; }
+    .redcap-step-row { padding: 0.75rem 0.85rem; }
+    .rc-step-title { font-size: 0.83rem; }
+    .rc-step-detail { font-size: 0.79rem; }
+  }
+
 </style>
 </head>
 <body>
@@ -266,8 +670,23 @@
       <li><a href="guide.html" class="active">Research Guide</a></li>
       <li><a class="nav-btn" href="https://forms.gle/o6hqBrvXAT9cCo1FA" target="_blank" rel="noopener">Intern Survey →</a></li>
     </ul>
+    <button class="nav-hamburger" aria-label="Open menu">
+      <span></span><span></span><span></span>
+    </button>
   </div>
 </nav>
+<div class="nav-overlay"></div>
+
+<div class="nav-mobile">
+  <ul>
+    <li><a href="index.html#problem">The Problem</a></li>
+    <li><a href="index.html#pillars">Our Pillars</a></li>
+    <li><a href="index.html#timeline">Timeline</a></li>
+    <li><a href="team.html">Meet the Team</a></li>
+    <li><a href="guide.html" class="active">Research Guide</a></li>
+    <li><a class="mob-btn" href="https://forms.gle/o6hqBrvXAT9cCo1FA" target="_blank" rel="noopener">Intern Survey →</a></li>
+  </ul>
+</div>
 
 <!-- HEADER -->
 <header class="page-header">
@@ -278,7 +697,7 @@
     <div class="header-actions">
       <a class="btn-primary" href="RECAP_Research_Guide_v6.pdf" download>
         <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
-        Download .pdf
+        Download PDF
       </a>
       <a class="btn-ghost" href="index.html">← Back to Home</a>
     </div>
@@ -405,19 +824,65 @@
           <div class="step-num">4</div>
           <div class="step-card">
             <h3>Build the REDCap database before abstraction</h3>
-            <p>REDCap is the safest default for most resident chart-review projects — free to all UM faculty, staff, and students, HIPAA-compliant, hosted by UM IT, and exports directly to SPSS, Stata, R, or SAS.</p>
 
-            <div class="info-box">
-              <div class="info-box-label">Getting Started with REDCap</div>
-              <ul>
-                <li>Create account at <a href="https://redcap.miami.edu" target="_blank" rel="noopener">redcap.miami.edu</a> — CaneID login, no separate access form required</li>
-                <li>Click <strong>"Request New Project"</strong> → complete the Decision Tree Survey → ServiceNow ticket auto-generates</li>
-                <li>Support: <a href="mailto:help@med.miami.edu">help@med.miami.edu</a> with subject line "REDCap" — auto-routes to a REDCap administrator</li>
-                <li>Training: BCCC and Calder Library Biomedical Data Services both offer REDCap-specific sessions</li>
-              </ul>
+            <div class="redcap-hero">
+              <div class="redcap-hero-left">
+                <div class="redcap-tagline">Free · HIPAA-compliant · UM-hosted</div>
+                <p class="redcap-desc">REDCap is the safest default for resident chart-review projects. It exports directly to SPSS, Stata, R, and SAS — and every UM trainee already has access.</p>
+                <a class="redcap-cta" href="https://redcap.miami.edu" target="_blank" rel="noopener">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+                  redcap.miami.edu
+                </a>
+              </div>
+              <div class="redcap-hero-right">
+                <div class="redcap-badge-row">
+                  <span class="redcap-badge">✓ Free for all UM users</span>
+                  <span class="redcap-badge">✓ HIPAA compliant</span>
+                  <span class="redcap-badge">✓ Exports to SPSS / R / Stata</span>
+                  <span class="redcap-badge">✓ No IT request needed</span>
+                </div>
+              </div>
             </div>
 
-            <div class="recap-tip"><strong>💡 RECAP Tip:</strong> Build the REDCap project <em>before</em> abstracting any charts. If more than one person is abstracting, write a short abstraction manual and pilot on 5–10 records first. Messy abstraction creates messy analysis — and there is no fixing it after the fact.</div>
+            <div class="redcap-steps">
+              <div class="redcap-step-label">Setup — 3 steps</div>
+              <div class="redcap-step-row">
+                <div class="rc-step-num">1</div>
+                <div class="rc-step-body">
+                  <div class="rc-step-title">Create your account</div>
+                  <div class="rc-step-detail">Go to <a href="https://redcap.miami.edu" target="_blank" rel="noopener">redcap.miami.edu</a> and log in with your CaneID — no separate access form or IT ticket required.</div>
+                </div>
+              </div>
+              <div class="redcap-step-row">
+                <div class="rc-step-num">2</div>
+                <div class="rc-step-body">
+                  <div class="rc-step-title">Request a new project</div>
+                  <div class="rc-step-detail">Click <strong>"Request New Project"</strong> and complete the Decision Tree Survey. A ServiceNow ticket auto-generates and routes to a REDCap administrator.</div>
+                </div>
+              </div>
+              <div class="redcap-step-row">
+                <div class="rc-step-num">3</div>
+                <div class="rc-step-body">
+                  <div class="rc-step-title">Build your data dictionary before touching a chart</div>
+                  <div class="rc-step-detail">Define every variable, set validation rules, and run a pilot on 5–10 records before full abstraction. If multiple people are abstracting, write a one-page abstraction manual first.</div>
+                </div>
+              </div>
+            </div>
+
+            <div class="redcap-support-row">
+              <div class="redcap-support-item">
+                <div class="rsi-label">Support</div>
+                <a href="mailto:help@med.miami.edu" class="rsi-link">help@med.miami.edu</a>
+                <div class="rsi-note">Subject: "REDCap" — auto-routes to administrator</div>
+              </div>
+              <div class="redcap-support-item">
+                <div class="rsi-label">Training</div>
+                <div class="rsi-link" style="color:var(--gray-700,#3a3a36);">BCCC &amp; Calder Library</div>
+                <div class="rsi-note">Both offer REDCap-specific sessions</div>
+              </div>
+            </div>
+
+            <div class="recap-tip" style="margin-top:1rem;"><strong>💡 RECAP Tip:</strong> Messy abstraction creates messy analysis — and there is no fixing it after the fact. The time you spend building a clean REDCap structure before you start pays back tenfold during analysis.</div>
           </div>
         </div>
 
@@ -679,6 +1144,7 @@
       <div class="section-eyebrow">Section 5</div>
       <h2>Core UM Resources</h2>
       <p class="lead">Every resource below is free for UM Internal Medicine residents unless noted. Contact information verified April 2026.</p>
+      <div class="resource-table-wrap">
       <table class="resource-table">
         <thead><tr><th style="width:22%">Resource</th><th style="width:30%">Contact / Portal</th><th>When to Use</th></tr></thead>
         <tbody>
@@ -693,6 +1159,7 @@
           <tr><td><strong>UM Libraries Open Access</strong></td><td><a href="https://guides.library.miami.edu/open-access" target="_blank" rel="noopener">guides.library.miami.edu/open-access</a><br>Jason Cohen: <a href="mailto:j.cohen4@miami.edu">j.cohen4@miami.edu</a></td><td>APC funding for PLOS, IOP, Wiley, Frontiers, Cambridge, Company of Biologists, RSC. Check Open Journal Finder first.</td></tr>
         </tbody>
       </table>
+      </div>
     </section>
 
   </main>
@@ -755,6 +1222,39 @@ function updateSpy() {
 }
 window.addEventListener('scroll', updateSpy, { passive: true });
 updateSpy();
+</script>
+
+
+<script>
+(function() {
+  var btn = document.querySelector('.nav-hamburger');
+  var mob = document.querySelector('.nav-mobile');
+  var overlay = document.querySelector('.nav-overlay');
+  if (!btn) return;
+
+  function open() {
+    btn.classList.add('open');
+    mob.classList.add('open');
+    overlay.classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+  function close() {
+    btn.classList.remove('open');
+    mob.classList.remove('open');
+    overlay.classList.remove('open');
+    document.body.style.overflow = '';
+  }
+
+  btn.addEventListener('click', function() {
+    mob.classList.contains('open') ? close() : open();
+  });
+  overlay.addEventListener('click', close);
+
+  // Close on any mobile link click
+  mob.querySelectorAll('a').forEach(function(a) {
+    a.addEventListener('click', close);
+  });
+})();
 </script>
 
 </body>
