@@ -29,18 +29,35 @@
   }
 
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-  html { scroll-behavior: smooth; }
+  html { scroll-behavior: smooth; background: #ffffff; }
   body {
     font-family: var(--sans);
-    background: var(--white);
+    background: #ffffff;
     color: var(--gray-800);
     line-height: 1.65;
     font-size: 15px;
     -webkit-font-smoothing: antialiased;
+    width: 100%;
+    max-width: 100vw;
+    min-height: 100vh;
   }
 
-  /* Overflow wrapper — never set overflow on body/html on iOS */
-  .page-wrap { overflow-x: hidden; width: 100%; }
+
+  /* Prevent any element from exceeding viewport width */
+  img, video, table, pre, iframe,
+  .step-card, .info-box, .recap-tip, .checklist,
+  .redcap-hero, .redcap-steps, .analysis-paths,
+  .writing-options, .track-cards, .apc-grid, .apc-links,
+  .chips, .redcap-support-row, .path-card {
+    max-width: 100%;
+    box-sizing: border-box;
+  }
+
+  /* Headings and text never overflow */
+  h1, h2, h3, h4, h5, p, li, div {
+    word-break: break-word;
+    overflow-wrap: break-word;
+  }
 
   /* ── NAV ── */
   nav {
@@ -241,9 +258,10 @@
     grid-template-columns: 210px 1fr;
     gap: 3.5rem;
     align-items: start;
+    background: #ffffff;
   }
   @media (max-width: 780px) {
-    .guide-layout { grid-template-columns: 1fr; gap: 0; }
+    .guide-layout { grid-template-columns: 1fr; gap: 0; background: var(--white); }
     .sidebar { display: none; }
   }
 
@@ -263,7 +281,7 @@
   .download-btn:hover { background: #003d22; }
 
   /* ── GUIDE CONTENT ── */
-  .guide-content { min-width: 0; }
+  .guide-content { min-width: 0; background: var(--white); }
   .guide-section { margin-bottom: 4rem; scroll-margin-top: 115px; }
   .section-eyebrow { display: flex; align-items: center; gap: 0.6rem; font-size: 0.67rem; font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase; color: var(--gray-400); margin-bottom: 0.45rem; }
   .section-eyebrow::after { content: ''; flex: 1; max-width: 36px; height: 1.5px; background: currentColor; }
@@ -492,8 +510,6 @@
 </style>
 </head>
 <body>
-<div class="page-wrap">
-
 <!-- NAV -->
 <nav>
   <div class="nav-inner">
@@ -1035,6 +1051,5 @@
 })();
 </script>
 
-</div><!-- /.page-wrap -->
 </body>
 </html>
