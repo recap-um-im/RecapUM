@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <title>RECAP — Research How-To Guide | UM/JMH Internal Medicine</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=DM+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
@@ -28,7 +28,7 @@
     --max-w: 1080px;
   }
 
-  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; -webkit-tap-highlight-color: transparent; }
   html { scroll-behavior: smooth; background: #ffffff; }
   body {
     font-family: var(--sans);
@@ -38,7 +38,6 @@
     font-size: 15px;
     -webkit-font-smoothing: antialiased;
     width: 100%;
-    max-width: 100vw;
     min-height: 100vh;
   }
 
@@ -59,6 +58,22 @@
     overflow-wrap: break-word;
   }
 
+
+  /* Remove iOS tap blue flash on non-interactive elements */
+  div, section, header, footer, aside, main, nav,
+  .step-card, .info-box, .checklist, .recap-tip,
+  .redcap-hero, .redcap-steps, .redcap-step-row,
+  .path-card, .writing-option, .track-card, .apc-card,
+  .guide-section, .guide-layout, .steps, .step {
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  /* Keep tap feedback only on actual interactive elements */
+  a, button, [role="button"] {
+    -webkit-tap-highlight-color: rgba(0, 80, 48, 0.15);
+    cursor: pointer;
+  }
+
   /* ── NAV ── */
   nav {
     background: var(--green-dark);
@@ -66,6 +81,7 @@
     position: sticky;
     top: 0;
     z-index: 200;
+    width: 100%;
   }
   .nav-inner {
     max-width: var(--max-w);
@@ -437,6 +453,14 @@
   .footer-link { color: rgba(255,255,255,0.65); font-size: 0.8rem; font-weight: 500; text-decoration: none; transition: color 0.15s; }
   .footer-link:hover { color: var(--orange); }
   .footer-copy { font-size: 0.72rem; color: rgba(255,255,255,0.3); margin-top: 0.25rem; }
+
+
+  /* Landscape orientation — ensure full viewport width */
+  @media screen and (orientation: landscape) and (max-width: 900px) {
+    html, body { width: 100%; }
+    nav, .page-header, .quick-nav, footer { width: 100%; }
+    .guide-layout { padding-left: 1rem; padding-right: 1rem; }
+  }
 
   /* ── MOBILE OVERRIDES ── */
   @media (max-width: 680px) {
