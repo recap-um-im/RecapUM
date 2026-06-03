@@ -210,10 +210,13 @@
   .btn-ghost:hover { border-color: rgba(255,255,255,0.7); color: var(--white); }
 
   /* ── SECTION QUICK NAV ── */
-  .quick-nav { background: var(--off-white); border-bottom: 1px solid var(--gray-200); padding: 0; position: sticky; top: 54px; z-index: 90; width: 100%; max-width: 100%; overflow: hidden; box-sizing: border-box; }
+  .quick-nav { background: var(--off-white); border-bottom: 1px solid var(--gray-200); padding: 0; position: sticky; top: 54px; z-index: 90; width: 100%; max-width: 100%; box-sizing: border-box; }
+  /* Right-edge fade showing more tabs exist */
+  .quick-nav::after { content: ''; position: absolute; top: 0; right: 0; width: 40px; height: 100%; background: linear-gradient(to right, transparent, var(--off-white) 90%); pointer-events: none; touch-action: none; z-index: 1; transition: opacity 0.3s; }
+  .quick-nav.scrolled-end::after { opacity: 0; }
   .quick-nav-inner { max-width: 100%; margin: 0 auto; display: flex; overflow-x: auto; scrollbar-width: none; -webkit-overflow-scrolling: touch; scroll-snap-type: x proximity; padding: 0 clamp(0.75rem,4vw,2.5rem); }
   .quick-nav-inner::-webkit-scrollbar { display: none; }
-  .quick-nav-inner a { color: var(--gray-600); font-size: 0.78rem; font-weight: 600; letter-spacing: 0.04em; text-decoration: none; padding: 0.85rem 0.9rem; white-space: nowrap; border-bottom: 2px solid transparent; transition: color 0.15s, border-color 0.15s; flex-shrink: 0; scroll-snap-align: start; }
+  .quick-nav-inner a { color: var(--gray-600); font-size: 0.78rem; font-weight: 600; letter-spacing: 0.04em; text-decoration: none; padding: 0.85rem 0.9rem; white-space: nowrap; border-bottom: 2px solid transparent; transition: color 0.15s, border-color 0.15s; flex-shrink: 0; scroll-snap-align: start; position: relative; z-index: 2; }
   .quick-nav-inner a:hover, .quick-nav-inner a.qn-active { color: var(--green-dark); border-bottom-color: var(--green-mid); }
 
   /* ── TWO-COLUMN LAYOUT ── */
@@ -721,6 +724,53 @@
     }
   }
 
+
+  /* Scroll hint arrow for quick-nav */
+  .qn-scroll-hint {
+    position: absolute;
+    right: 4px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 20px;
+    height: 20px;
+    background: var(--green-dark);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--white);
+    font-size: 0.65rem;
+    pointer-events: none;
+    touch-action: none;
+    user-select: none;
+    z-index: 0;
+    opacity: 1;
+    transition: opacity 0.3s;
+    box-shadow: 0 1px 4px rgba(0,0,0,0.15);
+  }
+  .qn-scroll-hint.hidden { opacity: 0; pointer-events: none; }
+
+  /* On desktop hide it — only useful on mobile */
+  @media (min-width: 681px) {
+    .qn-scroll-hint { display: none; }
+    .quick-nav::after { display: none; }
+  }
+
+  /* Make tabs slightly more compact on mobile so more fit */
+  @media (max-width: 680px) {
+    .quick-nav-inner a {
+      font-size: 0.72rem;
+      padding: 0.7rem 0.7rem;
+      letter-spacing: 0.02em;
+    }
+  }
+  @media (max-width: 400px) {
+    .quick-nav-inner a {
+      font-size: 0.68rem;
+      padding: 0.68rem 0.6rem;
+    }
+  }
+
 </style>
 </head>
 <body>
@@ -773,7 +823,8 @@
 
 <!-- SECTION QUICK NAV -->
 <div class="quick-nav">
-  <div class="quick-nav-inner">
+  <span class="qn-scroll-hint" id="qn-hint">›</span>
+  <div class="quick-nav-inner" id="qn-inner">
     <a href="#chart-review">1 · Chart Review</a>
     <a href="#systematic-review">2 · Systematic Review</a>
     <a href="#qi">3 · QI Project</a>
@@ -1321,6 +1372,27 @@ updateSpy();
   mob.querySelectorAll('a').forEach(function(a) {
     a.addEventListener('click', close);
   });
+})();
+</script>
+
+
+<script>
+(function() {
+  var inner = document.getElementById('qn-inner');
+  var hint  = document.getElementById('qn-hint');
+  var nav   = inner ? inner.closest('.quick-nav') : null;
+  if (!inner || !hint || !nav) return;
+
+  function update() {
+    var atEnd = inner.scrollLeft + inner.clientWidth >= inner.scrollWidth - 8;
+    hint.classList.toggle('hidden', atEnd);
+    nav.classList.toggle('scrolled-end', atEnd);
+  }
+
+  inner.addEventListener('scroll', update, { passive: true });
+  window.addEventListener('resize', update);
+  // Slight delay to let layout settle
+  setTimeout(update, 200);
 })();
 </script>
 
