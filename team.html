@@ -45,7 +45,7 @@
     border-bottom: 3px solid var(--orange);
     position: sticky;
     top: 0;
-    z-index: 100;
+    z-index: 200;
   }
   .nav-inner {
     max-width: var(--max-w);
@@ -55,7 +55,7 @@
     align-items: center;
     justify-content: space-between;
     height: 54px;
-    gap: 1.5rem;
+    gap: 1rem;
   }
   .nav-logo {
     font-family: var(--serif);
@@ -68,8 +68,11 @@
     align-items: center;
     gap: 0.55rem;
     white-space: nowrap;
+    z-index: 201;
   }
   .nav-logo-dot { width: 7px; height: 7px; background: var(--orange); border-radius: 50%; flex-shrink: 0; }
+
+  /* Desktop links */
   .nav-links { display: flex; align-items: center; gap: 0.25rem; list-style: none; }
   .nav-links a {
     color: rgba(255,255,255,0.75);
@@ -80,13 +83,111 @@
     padding: 0.35rem 0.75rem;
     border-radius: 4px;
     transition: color 0.15s, background 0.15s;
+    white-space: nowrap;
   }
   .nav-links a:hover { color: var(--white); background: rgba(255,255,255,0.1); }
   .nav-links a.active { color: var(--white); }
-  .nav-btn { background: var(--orange) !important; color: var(--white) !important; font-weight: 700 !important; padding: 0.35rem 1rem !important; border-radius: 2px !important; }
+  .nav-btn {
+    background: var(--orange) !important;
+    color: var(--white) !important;
+    font-weight: 700 !important;
+    padding: 0.35rem 1rem !important;
+    border-radius: 2px !important;
+  }
   .nav-btn:hover { background: #e06510 !important; }
-  @media (max-width: 580px) { .nav-links li:not(:last-child) { display: none; } }
 
+  /* Hamburger button */
+  .nav-hamburger {
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
+    width: 38px;
+    height: 38px;
+    background: transparent;
+    border: 1.5px solid rgba(255,255,255,0.25);
+    border-radius: 4px;
+    cursor: pointer;
+    padding: 0;
+    z-index: 201;
+    flex-shrink: 0;
+  }
+  .nav-hamburger span {
+    display: block;
+    width: 18px;
+    height: 2px;
+    background: var(--white);
+    border-radius: 2px;
+    transition: transform 0.25s, opacity 0.25s;
+    transform-origin: center;
+  }
+  .nav-hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+  .nav-hamburger.open span:nth-child(2) { opacity: 0; transform: scaleX(0); }
+  .nav-hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+  /* Mobile drawer */
+  .nav-mobile {
+    display: none;
+    position: fixed;
+    top: 57px;
+    left: 0;
+    right: 0;
+    background: var(--green-dark);
+    border-bottom: 3px solid var(--orange);
+    z-index: 199;
+    transform: translateY(-110%);
+    transition: transform 0.28s cubic-bezier(0.4,0,0.2,1);
+    box-shadow: 0 8px 24px rgba(0,0,0,0.25);
+  }
+  .nav-mobile.open { transform: translateY(0); }
+  .nav-mobile ul {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    padding: 0.75rem 1rem 1rem;
+    gap: 0.15rem;
+  }
+  .nav-mobile a {
+    display: block;
+    color: rgba(255,255,255,0.85);
+    text-decoration: none;
+    font-size: 0.95rem;
+    font-weight: 500;
+    padding: 0.7rem 0.85rem;
+    border-radius: 4px;
+    transition: background 0.15s, color 0.15s;
+    letter-spacing: 0.02em;
+  }
+  .nav-mobile a:hover { background: rgba(255,255,255,0.1); color: var(--white); }
+  .nav-mobile a.active { color: var(--white); font-weight: 600; }
+  .nav-mobile .mob-btn {
+    background: var(--orange);
+    color: var(--white) !important;
+    font-weight: 700 !important;
+    margin-top: 0.35rem;
+    text-align: center;
+  }
+  .nav-mobile .mob-btn:hover { background: #e06510; }
+
+  /* Overlay */
+  .nav-overlay {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.35);
+    z-index: 198;
+    opacity: 0;
+    transition: opacity 0.25s;
+  }
+  .nav-overlay.open { opacity: 1; }
+
+  @media (max-width: 680px) {
+    .nav-links { display: none; }
+    .nav-hamburger { display: flex; }
+    .nav-mobile { display: block; }
+    .nav-overlay { display: block; }
+  }
   /* ── PAGE HEADER ── */
   .page-header {
     background: var(--green-dark);
@@ -353,6 +454,108 @@
   .footer-copy { font-size: 0.72rem; color: rgba(255,255,255,0.3); margin-top: 0.25rem; }
   .footer-right { display: flex; flex-direction: column; align-items: flex-end; gap: 0.4rem; }
   @media (max-width: 500px) { .footer-right { align-items: flex-start; } }
+
+  /* ══════════════════════════════════════
+     MOBILE IMPROVEMENTS (max-width: 680px)
+  ══════════════════════════════════════ */
+  @media (max-width: 680px) {
+
+    /* Hero */
+    .hero { padding: 2.5rem 1rem 2rem; }
+    .hero-wordmark { font-size: clamp(3.5rem, 22vw, 5.5rem); }
+    .hero-tagline { font-size: 1.1rem; }
+    .hero-actions { flex-direction: column; align-items: flex-start; }
+    .btn-primary, .btn-ghost { width: 100%; justify-content: center; }
+
+    /* Page header (team/guide) */
+    .page-header { padding: 2rem 1rem 1.75rem; }
+    .page-header h1 { font-size: clamp(2rem, 11vw, 3rem); }
+    .header-actions { flex-direction: column; align-items: flex-start; }
+    .header-actions .btn-primary,
+    .header-actions .btn-ghost { width: 100%; justify-content: center; }
+
+    /* Sections */
+    .section { padding: 2rem 1rem; }
+    .section-lead { margin-bottom: 1.5rem; }
+
+    /* Problem / Pillars / Outcomes grids already stacked via existing media queries */
+
+    /* Timeline */
+    .tl-row { grid-template-columns: 1fr; }
+    .tl-meta { border-right: none; border-bottom: 1px solid var(--gray-200); }
+
+    /* Mission banner */
+    .mission-banner { padding: 2rem 1rem; }
+    .mission-quote { font-size: 1.2rem; }
+
+    /* Footer */
+    .footer-inner { flex-direction: column; align-items: flex-start; gap: 1.25rem; }
+    .footer-right { align-items: flex-start; }
+
+    /* Solution bridge */
+    .solution-bridge-inner { flex-direction: column; gap: 0.5rem; text-align: center; }
+  }
+
+  /* Guide-page specific mobile */
+  @media (max-width: 680px) {
+    /* Quick nav scrolls horizontally — already works, just make text slightly smaller */
+    .quick-nav-inner a { font-size: 0.74rem; padding: 0.75rem 0.85rem; }
+
+    /* Steps connector line */
+    .steps::before { left: 15px; }
+    .step { grid-template-columns: 32px 1fr; gap: 0.9rem; padding-bottom: 1.75rem; }
+    .step-num { width: 32px; height: 32px; font-size: 0.72rem; }
+
+    /* Step card */
+    .step-card { padding: 1.1rem 1.1rem; }
+    .step-card h3 { font-size: 1rem; }
+
+    /* Analysis paths already stack via existing query */
+    /* Writing options already stack */
+    /* Track cards already stack */
+
+    /* Resource table: make it scroll horizontally on very narrow screens */
+    .resource-table-wrap { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+
+    /* Guide layout */
+    .guide-layout { padding: 1.5rem 1rem; }
+
+    /* Section sequence label */
+    .sequence-label { font-size: 0.74rem; padding: 0.5rem 0.75rem; }
+
+    /* Info box */
+    .info-box li { font-size: 0.82rem; }
+
+    /* Chips */
+    .chips { gap: 0.35rem; }
+    .chip { font-size: 0.74rem; padding: 0.22rem 0.6rem; }
+
+    /* BCCC hours */
+    .bccc-hours .hours-row { font-size: 0.74rem; }
+
+    /* Writing options */
+    .wo-title { font-size: 0.84rem; }
+    .wo-desc { font-size: 0.78rem; }
+
+    /* Timeline table */
+    .timeline-table { font-size: 0.78rem; }
+    .timeline-table td, .timeline-table th { padding: 0.5rem 0.65rem; }
+
+    /* Review table */
+    .review-table { font-size: 0.78rem; }
+    .review-table td, .review-table th { padding: 0.5rem 0.65rem; }
+
+    /* Team page: member cards slightly smaller */
+    .members-grid { grid-template-columns: repeat(auto-fill, minmax(130px, 1fr)); gap: 0.9rem; }
+    .specialty-member { width: 110px; }
+    .member-name { font-size: 0.78rem; }
+    .member-role { font-size: 0.68rem; }
+
+    /* Section titles */
+    .guide-section > h2 { font-size: 1.5rem; }
+    .section-title { font-size: 1.3rem; }
+  }
+
 </style>
 </head>
 <body>
@@ -372,8 +575,23 @@
       <li><a href="guide.html">Research Guide</a></li>
       <li><a class="nav-btn" href="https://forms.gle/o6hqBrvXAT9cCo1FA" target="_blank" rel="noopener">Intern Survey →</a></li>
     </ul>
+    <button class="nav-hamburger" aria-label="Open menu">
+      <span></span><span></span><span></span>
+    </button>
   </div>
 </nav>
+<div class="nav-overlay"></div>
+
+<div class="nav-mobile">
+  <ul>
+    <li><a href="index.html#problem">The Problem</a></li>
+    <li><a href="index.html#pillars">Our Pillars</a></li>
+    <li><a href="index.html#timeline">Timeline</a></li>
+    <li><a href="team.html" class="active">Meet the Team</a></li>
+    <li><a href="guide.html">Research Guide</a></li>
+    <li><a class="mob-btn" href="https://forms.gle/o6hqBrvXAT9cCo1FA" target="_blank" rel="noopener">Intern Survey →</a></li>
+  </ul>
+</div>
 
 <!-- PAGE HEADER -->
 <header class="page-header">
@@ -629,6 +847,39 @@
     </div>
   </div>
 </footer>
+
+
+<script>
+(function() {
+  var btn = document.querySelector('.nav-hamburger');
+  var mob = document.querySelector('.nav-mobile');
+  var overlay = document.querySelector('.nav-overlay');
+  if (!btn) return;
+
+  function open() {
+    btn.classList.add('open');
+    mob.classList.add('open');
+    overlay.classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+  function close() {
+    btn.classList.remove('open');
+    mob.classList.remove('open');
+    overlay.classList.remove('open');
+    document.body.style.overflow = '';
+  }
+
+  btn.addEventListener('click', function() {
+    mob.classList.contains('open') ? close() : open();
+  });
+  overlay.addEventListener('click', close);
+
+  // Close on any mobile link click
+  mob.querySelectorAll('a').forEach(function(a) {
+    a.addEventListener('click', close);
+  });
+})();
+</script>
 
 </body>
 </html>
