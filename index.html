@@ -182,9 +182,10 @@
     background: rgba(0,0,0,0.35);
     z-index: 198;
     opacity: 0;
+    pointer-events: none;
     transition: opacity 0.25s;
   }
-  .nav-overlay.open { opacity: 1; }
+  .nav-overlay.open { opacity: 1; pointer-events: auto; }
 
   @media (max-width: 680px) {
     .nav-links { display: none; }
