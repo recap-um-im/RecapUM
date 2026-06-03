@@ -37,9 +37,10 @@
     line-height: 1.65;
     font-size: 15px;
     -webkit-font-smoothing: antialiased;
-    /* Single clean overflow rule — no duplication */
-    overflow-x: hidden;
   }
+
+  /* Overflow wrapper — never set overflow on body/html on iOS */
+  .page-wrap { overflow-x: hidden; width: 100%; }
 
   /* ── NAV ── */
   nav {
@@ -208,6 +209,7 @@
     -webkit-overflow-scrolling: touch;
     scrollbar-width: none;
     padding: 0 clamp(0.5rem, 3vw, 2rem);
+    touch-action: pan-x;
   }
   .quick-nav-inner::-webkit-scrollbar { display: none; }
   .quick-nav-inner a {
@@ -221,9 +223,7 @@
     border-bottom: 2px solid transparent;
     transition: color 0.15s, border-color 0.15s;
     flex-shrink: 0;
-    /* Links must be above any pseudo-element overlays */
-    position: relative;
-    z-index: 1;
+
   }
   .quick-nav-inner a:hover,
   .quick-nav-inner a.qn-active { color: var(--green-dark); border-bottom-color: var(--green-mid); }
@@ -436,9 +436,63 @@
     .footer-right { align-items: flex-start; }
     .footer-inner { flex-direction: column; }
   }
+
+  /* ── APC PUBLISHER GRID ── */
+  .apc-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+    gap: 0.6rem;
+    margin-top: 0.85rem;
+  }
+  .apc-card {
+    background: var(--green-light);
+    border: 1.5px solid rgba(29,158,117,0.2);
+    border-radius: 6px;
+    padding: 0.7rem 0.85rem;
+  }
+  .apc-pub {
+    font-size: 0.82rem;
+    font-weight: 700;
+    color: var(--green-dark);
+    margin-bottom: 0.2rem;
+  }
+  .apc-detail {
+    font-size: 0.73rem;
+    color: var(--gray-600);
+    line-height: 1.4;
+  }
+  .apc-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-top: 0.85rem;
+  }
+  .apc-link-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+    background: var(--white);
+    border: 1.5px solid var(--green-mid);
+    color: var(--green-dark);
+    font-size: 0.78rem;
+    font-weight: 600;
+    padding: 0.45rem 0.85rem;
+    border-radius: 4px;
+    text-decoration: none;
+    transition: background 0.15s, color 0.15s;
+  }
+  .apc-link-btn:hover { background: var(--green-light); }
+
+  @media (max-width: 480px) {
+    .apc-grid { grid-template-columns: 1fr 1fr; }
+    .apc-links { flex-direction: column; }
+    .apc-link-btn { width: 100%; justify-content: center; }
+  }
+
 </style>
 </head>
 <body>
+<div class="page-wrap">
 
 <!-- NAV -->
 <nav>
@@ -861,23 +915,31 @@
         <div class="step"><div class="step-num orange">→</div><div class="step-card"><h3>Verify the journal is legitimate</h3><p>Be cautious of unsolicited email invitations. Verify journals in DOAJ or check with a Calder librarian before submitting.</p></div></div>
         <div class="step"><div class="step-num orange">→</div><div class="step-card">
           <h3>Check UM Open Access coverage before paying any APC</h3>
-          <div class="info-box">
-            <div class="info-box-label">UM Libraries Open Access &amp; APC Funding — Active Agreements</div>
-            <ul>
-              <li>Eligibility: corresponding author with current UM affiliation — use @miami.edu email at submission</li>
-              <li><strong>PLOS (12 journals):</strong> Full APC — unlimited articles</li>
-              <li><strong>IOP (75+ journals):</strong> Unlimited articles — verify current agreement dates</li>
-              <li><strong>Wiley (hybrid &amp; gold OA):</strong> 199 articles/year cap</li>
-              <li><strong>Frontiers (213+ journals):</strong> Flat-fee agreement — unlimited articles</li>
-              <li><strong>Cambridge University Press:</strong> Read &amp; Publish — 2025 onwards</li>
-              <li><strong>Company of Biologists (5 journals):</strong> Unlimited through 2026</li>
-              <li><strong>Royal Society of Chemistry:</strong> Qualifying journals — verify agreement dates</li>
-              <li>Open Journal Finder: <a href="https://university-of-miami.openjournalfinder.com/journals/?has_active_deal=true" target="_blank" rel="noopener">university-of-miami.openjournalfinder.com</a></li>
-              <li>Repository: <a href="https://scholarship.miami.edu" target="_blank" rel="noopener">scholarship.miami.edu</a></li>
-              <li>OA Contact: Jason Cohen — <a href="mailto:j.cohen4@miami.edu">j.cohen4@miami.edu</a></li>
-            </ul>
+          <p style="font-size:0.85rem;color:var(--gray-600);line-height:1.65;margin-bottom:0.85rem;">UM Libraries covers article processing charges for affiliated authors. Use your @miami.edu email at submission. Check the Open Journal Finder before paying anything out of pocket.</p>
+
+          <div class="apc-grid">
+            <div class="apc-card"><div class="apc-pub">PLOS</div><div class="apc-detail">12 journals · Full APC · unlimited</div></div>
+            <div class="apc-card"><div class="apc-pub">IOP</div><div class="apc-detail">75+ journals · unlimited · verify dates</div></div>
+            <div class="apc-card"><div class="apc-pub">Wiley</div><div class="apc-detail">Hybrid &amp; gold OA · 199 articles/yr cap</div></div>
+            <div class="apc-card"><div class="apc-pub">Frontiers</div><div class="apc-detail">213+ journals · flat-fee · unlimited</div></div>
+            <div class="apc-card"><div class="apc-pub">Cambridge UP</div><div class="apc-detail">Read &amp; Publish · 2025 onwards</div></div>
+            <div class="apc-card"><div class="apc-pub">Company of Biologists</div><div class="apc-detail">5 journals · unlimited through 2026</div></div>
+            <div class="apc-card"><div class="apc-pub">RSC</div><div class="apc-detail">Qualifying journals · verify dates</div></div>
           </div>
-          <div class="recap-tip"><strong>💡 RECAP Tip:</strong> Check the Open Journal Finder before you submit anywhere. Many high-quality journals are covered, potentially saving $1,000–$3,000 in APC costs.</div>
+
+          <div class="apc-links">
+            <a href="https://university-of-miami.openjournalfinder.com/journals/?has_active_deal=true" target="_blank" rel="noopener" class="apc-link-btn">
+              🔍 Open Journal Finder
+            </a>
+            <a href="https://scholarship.miami.edu" target="_blank" rel="noopener" class="apc-link-btn">
+              📂 Scholarship@Miami
+            </a>
+            <a href="mailto:j.cohen4@miami.edu" class="apc-link-btn">
+              ✉ Jason Cohen — OA Contact
+            </a>
+          </div>
+
+          <div class="recap-tip"><strong>💡 RECAP Tip:</strong> Check the Open Journal Finder before you submit anywhere — many high-quality journals are covered, potentially saving $1,000–$3,000 in APC costs.</div>
         </div></div>
       </div>
     </section>
@@ -973,5 +1035,6 @@
 })();
 </script>
 
+</div><!-- /.page-wrap -->
 </body>
 </html>
