@@ -1,11 +1,12 @@
 <!DOCTYPE html>
+
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0, viewport-fit=cover" name="viewport"/>
 <title>RECAP — Meet the Team | UM/JMH Internal Medicine</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=DM+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400&amp;family=DM+Sans:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
 <style>
   :root {
     --green-dark:  #005030;
@@ -437,6 +438,32 @@
   .sp-allergy .specialty-header { background: #f0fdf4; color: #166534; }
   .sp-allergy .specialty-header .sp-dot { background: #16a34a; }
 
+
+  /* Resident leadership: exactly four separate cards across on desktop */
+  .directors-section .members-grid.wide {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 1.25rem;
+    width: 100%;
+  }
+
+  .directors-section .member-card {
+    width: 100%;
+    min-width: 0;
+  }
+
+  .directors-section .member-info {
+    min-height: 96px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .directors-section .member-badge {
+    margin-top: auto;
+    white-space: nowrap;
+  }
+
   /* ── FOOTER ── */
   footer {
     background: var(--green-dark);
@@ -551,6 +578,11 @@
     .review-table { font-size: 0.78rem; }
     .review-table td, .review-table th { padding: 0.5rem 0.65rem; }
 
+
+    .directors-section .members-grid.wide {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
     /* Team page: member cards slightly smaller */
     .members-grid { grid-template-columns: repeat(auto-fill, minmax(130px, 1fr)); gap: 0.9rem; }
     .specialty-member { width: 110px; }
@@ -565,296 +597,264 @@
 </style>
 </head>
 <body>
-
 <!-- NAV -->
 <nav>
-  <div class="nav-inner">
-    <a class="nav-logo" href="index.html">
-      <span class="nav-logo-dot"></span>
+<div class="nav-inner">
+<a class="nav-logo" href="index.html">
+<span class="nav-logo-dot"></span>
       RECAP
     </a>
-    <ul class="nav-links">
-      <li><a href="index.html#problem">The Problem</a></li>
-      <li><a href="index.html#pillars">Our Pillars</a></li>
-      <li><a href="index.html#timeline">Timeline</a></li>
-      <li><a href="team.html" class="active">Meet the Team</a></li>
-      <li><a href="guide.html">Research Guide</a></li>
-      <li><a class="nav-btn" href="https://forms.gle/o6hqBrvXAT9cCo1FA" target="_blank" rel="noopener">Intern Survey →</a></li>
-    </ul>
-    <button class="nav-hamburger" aria-label="Open menu">
-      <span></span><span></span><span></span>
-    </button>
-  </div>
+<ul class="nav-links">
+<li><a href="index.html#problem">The Problem</a></li>
+<li><a href="index.html#pillars">Our Pillars</a></li>
+<li><a href="index.html#timeline">Timeline</a></li>
+<li><a class="active" href="team.html">Meet the Team</a></li>
+<li><a href="guide.html">Research Guide</a></li>
+<li><a class="nav-btn" href="https://forms.gle/o6hqBrvXAT9cCo1FA" rel="noopener" target="_blank">Intern Survey →</a></li>
+</ul>
+<button aria-label="Open menu" class="nav-hamburger">
+<span></span><span></span><span></span>
+</button>
+</div>
 </nav>
 <div class="nav-overlay"></div>
-
 <div class="nav-mobile">
-  <ul>
-    <li><a href="index.html#problem">The Problem</a></li>
-    <li><a href="index.html#pillars">Our Pillars</a></li>
-    <li><a href="index.html#timeline">Timeline</a></li>
-    <li><a href="team.html" class="active">Meet the Team</a></li>
-    <li><a href="guide.html">Research Guide</a></li>
-    <li><a class="mob-btn" href="https://forms.gle/o6hqBrvXAT9cCo1FA" target="_blank" rel="noopener">Intern Survey →</a></li>
-  </ul>
+<ul>
+<li><a href="index.html#problem">The Problem</a></li>
+<li><a href="index.html#pillars">Our Pillars</a></li>
+<li><a href="index.html#timeline">Timeline</a></li>
+<li><a class="active" href="team.html">Meet the Team</a></li>
+<li><a href="guide.html">Research Guide</a></li>
+<li><a class="mob-btn" href="https://forms.gle/o6hqBrvXAT9cCo1FA" rel="noopener" target="_blank">Intern Survey →</a></li>
+</ul>
 </div>
-
 <!-- PAGE HEADER -->
 <header class="page-header">
-  <div class="page-header-inner">
-    <div class="page-header-eyebrow">RECAP Leadership</div>
-    <h1>Meet the <span>Team</span></h1>
-    <p class="page-header-sub">Faculty advisors, resident directors, and specialty subgroup leaders working together to make academic support accessible to every trainee.</p>
-  </div>
+<div class="page-header-inner">
+<div class="page-header-eyebrow">RECAP Leadership</div>
+<h1>Meet the <span>Team</span></h1>
+<p class="page-header-sub">Faculty advisors, resident directors, and specialty subgroup leaders working together to make academic support accessible to every trainee.</p>
+</div>
 </header>
-
 <!-- FACULTY ADVISORS -->
 <section class="team-section faculty-section">
-  <div class="section-inner">
-    <div class="section-eyebrow">Faculty</div>
-    <h2 class="section-title">Faculty Advisors</h2>
-    <p class="section-desc">Attending physicians who provide oversight, guidance, and institutional support for the RECAP initiative.</p>
-    <div class="members-grid wide">
-
-      <div class="member-card">
-        <img class="member-photo" src="https://med.miami.edu/-/media/millerschool/faculty/medicine/endocrinology/50185540-diana-soliman.ashx?h=550&iar=0&w=440" alt="Dr. Diana Soliman" loading="lazy">
-        <div class="member-info">
-          <div class="member-name">Dr. Diana Soliman</div>
-          <div class="member-role">Faculty Advisor</div>
-          <span class="member-badge badge-faculty">Faculty</span>
-        </div>
-      </div>
-
-      <div class="member-card">
-        <img class="member-photo" src="https://med.miami.edu/-/media/millerschool/faculty/medicine/general-internal-medicine/54134494-levy-amar.ashx?h=550&iar=0&w=440" alt="Dr. Levy Amar" loading="lazy">
-        <div class="member-info">
-          <div class="member-name">Dr. Levy Amar</div>
-          <div class="member-role">Faculty Advisor</div>
-          <span class="member-badge badge-faculty">Faculty</span>
-        </div>
-      </div>
-
-    </div>
-  </div>
+<div class="section-inner">
+<div class="section-eyebrow">Faculty</div>
+<h2 class="section-title">Faculty Advisors</h2>
+<p class="section-desc">Attending physicians who provide oversight, guidance, and institutional support for the RECAP initiative.</p>
+<div class="members-grid wide">
+<div class="member-card">
+<img alt="Dr. Diana Soliman" class="member-photo" loading="lazy" src="https://med.miami.edu/-/media/millerschool/faculty/medicine/endocrinology/50185540-diana-soliman.ashx?h=550&amp;iar=0&amp;w=440"/>
+<div class="member-info">
+<div class="member-name">Dr. Diana Soliman</div>
+<div class="member-role">Faculty Advisor</div>
+<span class="member-badge badge-faculty">Faculty</span>
+</div>
+</div>
+<div class="member-card">
+<img alt="Dr. Levy Amar" class="member-photo" loading="lazy" src="https://med.miami.edu/-/media/millerschool/faculty/medicine/general-internal-medicine/54134494-levy-amar.ashx?h=550&amp;iar=0&amp;w=440"/>
+<div class="member-info">
+<div class="member-name">Dr. Levy Amar</div>
+<div class="member-role">Faculty Advisor</div>
+<span class="member-badge badge-faculty">Faculty</span>
+</div>
+</div>
+</div>
+</div>
 </section>
-
 <!-- DIRECTORS -->
 <section class="team-section directors-section">
-  <div class="section-inner">
-    <div class="section-eyebrow">Leadership</div>
-    <h2 class="section-title">Director Group</h2>
-    <p class="section-desc">Resident leaders overseeing RECAP's structure, operations, and program-level strategy.</p>
-    <div class="members-grid wide">
-
-      <div class="member-card">
-        <img class="member-photo" src="https://images.squarespace-cdn.com/content/v1/5f2453bea051b1314d8043aa/1d55aa71-4353-43cd-a38f-1ea4c359d99c/Oh%2C+Clara+%28rez%29.jpg" alt="Clara Oh" loading="lazy">
-        <div class="member-info">
-          <div class="member-name">Clara Oh</div>
-          <div class="member-role">PGY-3</div>
-          <span class="member-badge badge-director">Director</span>
-        </div>
-      </div>
-
-      <div class="member-card">
-        <img class="member-photo" src="https://images.squarespace-cdn.com/content/v1/5f2453bea051b1314d8043aa/f81637be-1d34-47fd-854d-4c737b81d64a/rez_Osorio+Pesantes%2C+Maria.jpg" alt="Maria Fernanda Osorio" loading="lazy">
-        <div class="member-info">
-          <div class="member-name">Maria Fernanda Osorio</div>
-          <div class="member-role">PGY-2</div>
-          <span class="member-badge badge-director">Director</span>
-        </div>
-      </div>
-
-      <div class="member-card">
-        <img class="member-photo" src="https://images.squarespace-cdn.com/content/v1/5f2453bea051b1314d8043aa/8e6fd5d6-a0dc-4381-90b3-2fcdb60f4334/rez_Avendano+Capriles%2C+Camilo.JPG" alt="Camilo Avendaño Capriles" loading="lazy">
-        <div class="member-info">
-          <div class="member-name">Camilo Avendaño Capriles</div>
-          <div class="member-role">PGY-2</div>
-          <span class="member-badge badge-director">Director</span>
-        </div>
-      </div>
-
-      <div class="member-card">
-        <img class="member-photo" src="https://images.squarespace-cdn.com/content/v1/5f2453bea051b1314d8043aa/b2e1bb8f-f3fc-4b1a-9508-f1a0571ead0d/rez_Manothummetha%2C+Kasama.JPG" alt="Kasama Manothummetha" loading="lazy">
-        <div class="member-info">
-          <div class="member-name">Kasama Manothummetha</div>
-          <div class="member-role">PGY-2</div>
-          <span class="member-badge badge-director">Director</span>
-        </div>
-      </div>
-
-    </div>
-  </div>
+<div class="section-inner">
+<div class="section-eyebrow">Leadership</div>
+<h2 class="section-title">Resident Leadership</h2>
+<p class="section-desc">Resident leaders overseeing RECAP's structure, operations, and program-level strategy.</p>
+<div class="members-grid wide">
+<div class="member-card">
+<img alt="Kasama Manothummetha" class="member-photo" loading="lazy" src="https://images.squarespace-cdn.com/content/v1/5f2453bea051b1314d8043aa/b2e1bb8f-f3fc-4b1a-9508-f1a0571ead0d/rez_Manothummetha%2C+Kasama.JPG"/>
+<div class="member-info">
+<div class="member-name">Kasama Manothummetha</div>
+<div class="member-role">PGY-3</div>
+<span class="member-badge badge-director">Founder &amp; Director</span>
+</div>
+</div><div class="member-card">
+<img alt="Clara Oh" class="member-photo" loading="lazy" src="https://images.squarespace-cdn.com/content/v1/5f2453bea051b1314d8043aa/1d55aa71-4353-43cd-a38f-1ea4c359d99c/Oh%2C+Clara+%28rez%29.jpg"/>
+<div class="member-info">
+<div class="member-name">Clara Oh</div>
+<div class="member-role">Chief Resident</div>
+<span class="member-badge badge-director">Co-Director</span>
+</div>
+</div><div class="member-card">
+<img alt="Camilo Avendaño Capriles" class="member-photo" loading="lazy" src="https://images.squarespace-cdn.com/content/v1/5f2453bea051b1314d8043aa/8e6fd5d6-a0dc-4381-90b3-2fcdb60f4334/rez_Avendano+Capriles%2C+Camilo.JPG"/>
+<div class="member-info">
+<div class="member-name">Camilo Avendaño Capriles</div>
+<div class="member-role">PGY-3</div>
+<span class="member-badge badge-director">Co-Director</span>
+</div>
+</div><div class="member-card">
+<img alt="Maria Fernanda Osorio" class="member-photo" loading="lazy" src="https://images.squarespace-cdn.com/content/v1/5f2453bea051b1314d8043aa/f81637be-1d34-47fd-854d-4c737b81d64a/rez_Osorio+Pesantes%2C+Maria.jpg"/>
+<div class="member-info">
+<div class="member-name">Maria Fernanda Osorio</div>
+<div class="member-role">PGY-3</div>
+<span class="member-badge badge-director">Co-Director</span>
+</div>
+</div></div>
+</div>
 </section>
-
 <!-- SPECIALTY SUBGROUP LEADERS -->
 <section class="team-section liaisons-section">
-  <div class="section-inner">
-    <div class="section-eyebrow">Specialty Subgroups</div>
-    <h2 class="section-title">Specialty Subgroup Leaders</h2>
-    <p class="section-desc">Resident volunteers who connect trainees with research opportunities and mentors in their respective subspecialties. They oversee specialty-specific resources and help interns engage earlier in the academic year.</p>
-
-    <div class="specialty-groups">
-
-      <!-- CARDIOLOGY -->
-      <div class="specialty-group sp-cardiology">
-        <div class="specialty-header"><span class="sp-dot"></span> Cardiology</div>
-        <div class="specialty-members">
-          <div class="specialty-member">
-            <img src="https://images.squarespace-cdn.com/content/v1/5f2453bea051b1314d8043aa/bbf1eb70-554a-452c-bb58-bcae630dcde2/rez_Lisle%2C+Seth.jpg" alt="Seth Lisle" loading="lazy">
-            <span>Seth Lisle</span>
-          </div>
-          <div class="specialty-member">
-            <img src="https://images.squarespace-cdn.com/content/v1/5f2453bea051b1314d8043aa/b003b4b0-bea9-4ebb-ac60-a9b8b0f2f388/rez_Fernandez+Gonzalez%2C+Mailen.jpg" alt="Mailen Fernandez Gonzalez" loading="lazy">
-            <span>Mailen Fernandez Gonzalez</span>
-          </div>
-          <div class="specialty-member">
-            <img src="https://images.squarespace-cdn.com/content/v1/5f2453bea051b1314d8043aa/3f0ef777-a264-466c-8de3-df03ccbda5dc/rez_Akrama%2C+Abdul+Aziz.JPG" alt="Abdul Aziz Akrama" loading="lazy">
-            <span>Abdul Aziz Akrama</span>
-          </div>
-          <div class="specialty-member">
-            <img src="https://images.squarespace-cdn.com/content/v1/5f2453bea051b1314d8043aa/f81637be-1d34-47fd-854d-4c737b81d64a/rez_Osorio+Pesantes%2C+Maria.jpg" alt="Maria Fernanda Osorio" loading="lazy">
-            <span>Maria Fernanda Osorio</span>
-          </div>
-        </div>
-      </div>
-
-      <!-- GI -->
-      <div class="specialty-group sp-gi">
-        <div class="specialty-header"><span class="sp-dot"></span> Gastroenterology</div>
-        <div class="specialty-members">
-          <div class="specialty-member">
-            <img src="https://images.squarespace-cdn.com/content/v1/5f2453bea051b1314d8043aa/fc5d7862-55c3-47e3-a11e-d37ad002be7f/rez_Terala%2C+Rithwik.jpg" alt="Rithwik Terala" loading="lazy">
-            <span>Rithwik Terala</span>
-          </div>
-          <div class="specialty-member">
-            <img src="https://images.squarespace-cdn.com/content/v1/5f2453bea051b1314d8043aa/f800d7fa-99b6-41c5-8907-6a0e0a03413b/rez_Zheng%2C+Cathy.jpg" alt="Cathy Zheng" loading="lazy">
-            <span>Cathy Zheng</span>
-          </div>
-        </div>
-      </div>
-
-      <!-- HEMATOLOGY/ONCOLOGY -->
-      <div class="specialty-group sp-hemonc">
-        <div class="specialty-header"><span class="sp-dot"></span> Hematology / Oncology</div>
-        <div class="specialty-members">
-          <div class="specialty-member">
-            <img src="https://images.squarespace-cdn.com/content/v1/5f2453bea051b1314d8043aa/1d55aa71-4353-43cd-a38f-1ea4c359d99c/Oh%2C+Clara+%28rez%29.jpg" alt="Clara Oh" loading="lazy">
-            <span>Clara Oh</span>
-          </div>
-          <div class="specialty-member">
-            <img src="https://images.squarespace-cdn.com/content/v1/5f2453bea051b1314d8043aa/f3792ea7-b1a9-4e1c-b1d8-f8c92f537da4/rez_Sucre+Astorga%2C+Santiago.JPG" alt="Santiago Sucre Astorga" loading="lazy">
-            <span>Santiago Sucre Astorga</span>
-          </div>
-          <div class="specialty-member">
-            <img src="https://images.squarespace-cdn.com/content/v1/5f2453bea051b1314d8043aa/6d5e2761-030e-462b-ade3-d5ed62cf65c6/rez_Bugarin+Estrada%2C+Emmanuel.jpg" alt="Emmanuel Bugarin Estrada" loading="lazy">
-            <span>Emmanuel Bugarin Estrada</span>
-          </div>
-        </div>
-      </div>
-
-      <!-- PULM/CRITICAL CARE -->
-      <div class="specialty-group sp-pulm">
-        <div class="specialty-header"><span class="sp-dot"></span> Pulmonology / Critical Care</div>
-        <div class="specialty-members">
-          <div class="specialty-member">
-            <img src="https://images.squarespace-cdn.com/content/v1/5f2453bea051b1314d8043aa/8e6fd5d6-a0dc-4381-90b3-2fcdb60f4334/rez_Avendano+Capriles%2C+Camilo.JPG" alt="Camilo Avendaño Capriles" loading="lazy">
-            <span>Camilo Avendaño Capriles</span>
-          </div>
-          <div class="specialty-member">
-            <img src="https://images.squarespace-cdn.com/content/v1/5f2453bea051b1314d8043aa/22b56550-56ab-43ed-9cdf-55741c4b0178/rez_Cooley%2C+William.jpg" alt="William Cooley" loading="lazy">
-            <span>William Cooley</span>
-          </div>
-        </div>
-      </div>
-
-      <!-- NEPHROLOGY -->
-      <div class="specialty-group sp-nephro">
-        <div class="specialty-header"><span class="sp-dot"></span> Nephrology</div>
-        <div class="specialty-members">
-          <div class="specialty-member">
-            <img src="https://images.squarespace-cdn.com/content/v1/5f2453bea051b1314d8043aa/b2613bc7-9f6b-4420-b2c8-424eb3645800/rez_Khiraoui%2C+Noora.jpg" alt="Noora Khiraoui" loading="lazy">
-            <span>Noora Khiraoui</span>
-          </div>
-          <div class="specialty-member">
-            <img src="https://images.squarespace-cdn.com/content/v1/5f2453bea051b1314d8043aa/e553618b-b5a2-4a3d-a572-57659f9175bb/rez_De+Alencar+Salazar+Primo%2C+Guilherme.jpg" alt="Guilherme De Alencar Salazar Primo" loading="lazy">
-            <span>Guilherme De Alencar Salazar Primo</span>
-          </div>
-        </div>
-      </div>
-
-      <!-- ENDOCRINOLOGY -->
-      <div class="specialty-group sp-endo">
-        <div class="specialty-header"><span class="sp-dot"></span> Endocrinology</div>
-        <div class="specialty-members">
-          <div class="specialty-member">
-            <img src="https://images.squarespace-cdn.com/content/v1/5f2453bea051b1314d8043aa/a9d88b4a-e9c6-4690-96c1-7a85972e788d/rez_Bagos-Estevez%2C+Adriana.jpg" alt="Adriana Bagos-Estevez" loading="lazy">
-            <span>Adriana Bagos-Estevez</span>
-          </div>
-          <div class="specialty-member">
-            <img src="https://images.squarespace-cdn.com/content/v1/5f2453bea051b1314d8043aa/452d4625-b0c4-4b5c-877a-02087fb0a152/rez_Rocha+Haro%2C+Andrea.jpg" alt="Andrea Rocha Haro" loading="lazy">
-            <span>Andrea Rocha Haro</span>
-          </div>
-        </div>
-      </div>
-
-      <!-- SLEEP MEDICINE -->
-      <div class="specialty-group sp-sleep">
-        <div class="specialty-header"><span class="sp-dot"></span> Sleep Medicine</div>
-        <div class="specialty-members">
-          <div class="specialty-member">
-            <img src="https://images.squarespace-cdn.com/content/v1/5f2453bea051b1314d8043aa/761d7c5a-a1d9-4296-805c-6eaef73aca55/rez_Redondo%2C+Jose.jpg" alt="Jose Redondo" loading="lazy">
-            <span>Jose Redondo</span>
-          </div>
-        </div>
-      </div>
-
-      <!-- OCCUPATIONAL MEDICINE -->
-      <div class="specialty-group sp-occ">
-        <div class="specialty-header"><span class="sp-dot"></span> Occupational Medicine</div>
-        <div class="specialty-members">
-          <div class="specialty-member">
-            <img src="https://images.squarespace-cdn.com/content/v1/5f2453bea051b1314d8043aa/be51b099-dd2c-49c8-ac6f-313586ca06b7/rez_Parks+Melville%2C+Brad.jpg" alt="Brad Victor Telly Parks Melville" loading="lazy">
-            <span>Brad Parks Melville</span>
-          </div>
-        </div>
-      </div>
-
-      <!-- ALLERGY/IMMUNOLOGY -->
-      <div class="specialty-group sp-allergy">
-        <div class="specialty-header"><span class="sp-dot"></span> Allergy / Immunology</div>
-        <div class="specialty-members">
-          <div class="specialty-member">
-            <img src="https://images.squarespace-cdn.com/content/v1/5f2453bea051b1314d8043aa/56028c96-9ed5-411f-bb0e-13e37deb461a/rez_Bowen%2C+Mikayla.jpg" alt="Mikayla Bowen" loading="lazy">
-            <span>Mikayla Bowen</span>
-          </div>
-          <div class="specialty-member">
-            <img src="https://images.squarespace-cdn.com/content/v1/5f2453bea051b1314d8043aa/b2e1bb8f-f3fc-4b1a-9508-f1a0571ead0d/rez_Manothummetha%2C+Kasama.JPG" alt="Kasama Manothummetha" loading="lazy">
-            <span>Kasama Manothummetha</span>
-          </div>
-        </div>
-      </div>
-
-    </div>
-  </div>
+<div class="section-inner">
+<div class="section-eyebrow">Specialty Subgroups</div>
+<h2 class="section-title">Specialty Subgroup Leaders</h2>
+<p class="section-desc">Resident volunteers who connect trainees with research opportunities and mentors in their respective subspecialties. They oversee specialty-specific resources and help interns engage earlier in the academic year.</p>
+<div class="specialty-groups">
+<!-- CARDIOLOGY -->
+<div class="specialty-group sp-cardiology">
+<div class="specialty-header"><span class="sp-dot"></span> Cardiology</div>
+<div class="specialty-members">
+<div class="specialty-member">
+<img alt="Seth Lisle" loading="lazy" src="https://images.squarespace-cdn.com/content/v1/5f2453bea051b1314d8043aa/bbf1eb70-554a-452c-bb58-bcae630dcde2/rez_Lisle%2C+Seth.jpg"/>
+<span>Seth Lisle</span>
+</div>
+<div class="specialty-member">
+<img alt="Mailen Fernandez Gonzalez" loading="lazy" src="https://images.squarespace-cdn.com/content/v1/5f2453bea051b1314d8043aa/b003b4b0-bea9-4ebb-ac60-a9b8b0f2f388/rez_Fernandez+Gonzalez%2C+Mailen.jpg"/>
+<span>Mailen Fernandez Gonzalez</span>
+</div>
+<div class="specialty-member">
+<img alt="Abdul Aziz Akrama" loading="lazy" src="https://images.squarespace-cdn.com/content/v1/5f2453bea051b1314d8043aa/3f0ef777-a264-466c-8de3-df03ccbda5dc/rez_Akrama%2C+Abdul+Aziz.JPG"/>
+<span>Abdul Aziz Akrama</span>
+</div>
+<div class="specialty-member">
+<img alt="Maria Fernanda Osorio" loading="lazy" src="https://images.squarespace-cdn.com/content/v1/5f2453bea051b1314d8043aa/f81637be-1d34-47fd-854d-4c737b81d64a/rez_Osorio+Pesantes%2C+Maria.jpg"/>
+<span>Maria Fernanda Osorio</span>
+</div>
+</div>
+</div>
+<!-- GI -->
+<div class="specialty-group sp-gi">
+<div class="specialty-header"><span class="sp-dot"></span> Gastroenterology</div>
+<div class="specialty-members">
+<div class="specialty-member">
+<img alt="Rithwik Terala" loading="lazy" src="https://images.squarespace-cdn.com/content/v1/5f2453bea051b1314d8043aa/fc5d7862-55c3-47e3-a11e-d37ad002be7f/rez_Terala%2C+Rithwik.jpg"/>
+<span>Rithwik Terala</span>
+</div>
+<div class="specialty-member">
+<img alt="Cathy Zheng" loading="lazy" src="https://images.squarespace-cdn.com/content/v1/5f2453bea051b1314d8043aa/f800d7fa-99b6-41c5-8907-6a0e0a03413b/rez_Zheng%2C+Cathy.jpg"/>
+<span>Cathy Zheng</span>
+</div>
+</div>
+</div>
+<!-- HEMATOLOGY/ONCOLOGY -->
+<div class="specialty-group sp-hemonc">
+<div class="specialty-header"><span class="sp-dot"></span> Hematology / Oncology</div>
+<div class="specialty-members">
+<div class="specialty-member">
+<img alt="Clara Oh" loading="lazy" src="https://images.squarespace-cdn.com/content/v1/5f2453bea051b1314d8043aa/1d55aa71-4353-43cd-a38f-1ea4c359d99c/Oh%2C+Clara+%28rez%29.jpg"/>
+<span>Clara Oh</span>
+</div>
+<div class="specialty-member">
+<img alt="Santiago Sucre Astorga" loading="lazy" src="https://images.squarespace-cdn.com/content/v1/5f2453bea051b1314d8043aa/f3792ea7-b1a9-4e1c-b1d8-f8c92f537da4/rez_Sucre+Astorga%2C+Santiago.JPG"/>
+<span>Santiago Sucre Astorga</span>
+</div>
+<div class="specialty-member">
+<img alt="Emmanuel Bugarin Estrada" loading="lazy" src="https://images.squarespace-cdn.com/content/v1/5f2453bea051b1314d8043aa/6d5e2761-030e-462b-ade3-d5ed62cf65c6/rez_Bugarin+Estrada%2C+Emmanuel.jpg"/>
+<span>Emmanuel Bugarin Estrada</span>
+</div>
+</div>
+</div>
+<!-- PULM/CRITICAL CARE -->
+<div class="specialty-group sp-pulm">
+<div class="specialty-header"><span class="sp-dot"></span> Pulmonology / Critical Care</div>
+<div class="specialty-members">
+<div class="specialty-member">
+<img alt="Camilo Avendaño Capriles" loading="lazy" src="https://images.squarespace-cdn.com/content/v1/5f2453bea051b1314d8043aa/8e6fd5d6-a0dc-4381-90b3-2fcdb60f4334/rez_Avendano+Capriles%2C+Camilo.JPG"/>
+<span>Camilo Avendaño Capriles</span>
+</div>
+<div class="specialty-member">
+<img alt="William Cooley" loading="lazy" src="https://images.squarespace-cdn.com/content/v1/5f2453bea051b1314d8043aa/22b56550-56ab-43ed-9cdf-55741c4b0178/rez_Cooley%2C+William.jpg"/>
+<span>William Cooley</span>
+</div>
+</div>
+</div>
+<!-- NEPHROLOGY -->
+<div class="specialty-group sp-nephro">
+<div class="specialty-header"><span class="sp-dot"></span> Nephrology</div>
+<div class="specialty-members">
+<div class="specialty-member">
+<img alt="Noora Khiraoui" loading="lazy" src="https://images.squarespace-cdn.com/content/v1/5f2453bea051b1314d8043aa/b2613bc7-9f6b-4420-b2c8-424eb3645800/rez_Khiraoui%2C+Noora.jpg"/>
+<span>Noora Khiraoui</span>
+</div>
+<div class="specialty-member">
+<img alt="Guilherme De Alencar Salazar Primo" loading="lazy" src="https://images.squarespace-cdn.com/content/v1/5f2453bea051b1314d8043aa/e553618b-b5a2-4a3d-a572-57659f9175bb/rez_De+Alencar+Salazar+Primo%2C+Guilherme.jpg"/>
+<span>Guilherme De Alencar Salazar Primo</span>
+</div>
+</div>
+</div>
+<!-- ENDOCRINOLOGY -->
+<div class="specialty-group sp-endo">
+<div class="specialty-header"><span class="sp-dot"></span> Endocrinology</div>
+<div class="specialty-members">
+<div class="specialty-member">
+<img alt="Adriana Bagos-Estevez" loading="lazy" src="https://images.squarespace-cdn.com/content/v1/5f2453bea051b1314d8043aa/a9d88b4a-e9c6-4690-96c1-7a85972e788d/rez_Bagos-Estevez%2C+Adriana.jpg"/>
+<span>Adriana Bagos-Estevez</span>
+</div>
+<div class="specialty-member">
+<img alt="Andrea Rocha Haro" loading="lazy" src="https://images.squarespace-cdn.com/content/v1/5f2453bea051b1314d8043aa/452d4625-b0c4-4b5c-877a-02087fb0a152/rez_Rocha+Haro%2C+Andrea.jpg"/>
+<span>Andrea Rocha Haro</span>
+</div>
+</div>
+</div>
+<!-- SLEEP MEDICINE -->
+<div class="specialty-group sp-sleep">
+<div class="specialty-header"><span class="sp-dot"></span> Sleep Medicine</div>
+<div class="specialty-members">
+<div class="specialty-member">
+<img alt="Jose Redondo" loading="lazy" src="https://images.squarespace-cdn.com/content/v1/5f2453bea051b1314d8043aa/761d7c5a-a1d9-4296-805c-6eaef73aca55/rez_Redondo%2C+Jose.jpg"/>
+<span>Jose Redondo</span>
+</div>
+</div>
+</div>
+<!-- OCCUPATIONAL MEDICINE -->
+<div class="specialty-group sp-occ">
+<div class="specialty-header"><span class="sp-dot"></span> Occupational Medicine</div>
+<div class="specialty-members">
+<div class="specialty-member">
+<img alt="Brad Victor Telly Parks Melville" loading="lazy" src="https://images.squarespace-cdn.com/content/v1/5f2453bea051b1314d8043aa/be51b099-dd2c-49c8-ac6f-313586ca06b7/rez_Parks+Melville%2C+Brad.jpg"/>
+<span>Brad Parks Melville</span>
+</div>
+</div>
+</div>
+<!-- ALLERGY/IMMUNOLOGY -->
+<div class="specialty-group sp-allergy">
+<div class="specialty-header"><span class="sp-dot"></span> Allergy / Immunology</div>
+<div class="specialty-members">
+<div class="specialty-member">
+<img alt="Mikayla Bowen" loading="lazy" src="https://images.squarespace-cdn.com/content/v1/5f2453bea051b1314d8043aa/56028c96-9ed5-411f-bb0e-13e37deb461a/rez_Bowen%2C+Mikayla.jpg"/>
+<span>Mikayla Bowen</span>
+</div>
+<div class="specialty-member">
+<img alt="Kasama Manothummetha" loading="lazy" src="https://images.squarespace-cdn.com/content/v1/5f2453bea051b1314d8043aa/b2e1bb8f-f3fc-4b1a-9508-f1a0571ead0d/rez_Manothummetha%2C+Kasama.JPG"/>
+<span>Kasama Manothummetha</span>
+</div>
+</div>
+</div>
+</div>
+</div>
 </section>
-
 <!-- FOOTER -->
 <footer>
-  <div class="footer-inner">
-    <div>
-      <div class="footer-wordmark">RECAP</div>
-      <div class="footer-sub">Research · Education · Clinical · Academic · Project<br>Internal Medicine — University of Miami / Jackson Memorial Hospital</div>
-    </div>
-    <div class="footer-right">
-      <a class="footer-link" href="index.html">← Back to Home</a>
-      <a class="footer-link" href="guide.html">Research Guide</a>
-      <a class="footer-link" href="https://forms.gle/o6hqBrvXAT9cCo1FA" target="_blank" rel="noopener">Intern Survey</a>
-      <div class="footer-copy">© 2025 RECAP · UM/JMH Internal Medicine</div>
-    </div>
-  </div>
+<div class="footer-inner">
+<div>
+<div class="footer-wordmark">RECAP</div>
+<div class="footer-sub">Research · Education · Clinical · Academic · Project<br/>Internal Medicine — University of Miami / Jackson Memorial Hospital</div>
+</div>
+<div class="footer-right">
+<a class="footer-link" href="index.html">← Back to Home</a>
+<a class="footer-link" href="guide.html">Research Guide</a>
+<a class="footer-link" href="https://forms.gle/o6hqBrvXAT9cCo1FA" rel="noopener" target="_blank">Intern Survey</a>
+<div class="footer-copy">© 2026 RECAP · UM/JMH Internal Medicine</div>
+</div>
+</div>
 </footer>
-
-
 <script>
 (function() {
   var btn = document.querySelector('.nav-hamburger');
@@ -886,6 +886,5 @@
   });
 })();
 </script>
-
 </body>
 </html>
